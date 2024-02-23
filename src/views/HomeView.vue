@@ -4,7 +4,7 @@
 <template>
   <div>
     <router-link to="lesson_1">Lesson 1</router-link>
-    <router-link to="/demo">Demo Page</router-link>
+    <router-link class="ant-mt-24" to="/demo">Demo Page</router-link>
   </div>
 </template>
 
@@ -21,6 +21,7 @@ body {
 div {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: flex-start;
 }
 </style>
