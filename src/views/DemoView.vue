@@ -1,13 +1,16 @@
 
 <script setup>
+import { ref } from 'vue'
 
+
+const editableStr = ref('This is an editable text.');
 </script>
 
 <template>
     <div>
         <!-- write ur code here -->
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolor commodi suscipit veritatis ea explicabo itaque, quia
-        maxime aspernatur totam saepe, consequatur cum recusandae esse qui deserunt animi! Harum, praesentium autem!
+        <a-typography-paragraph v-model:content="editableStr" editable />
+        <a-button type="primary">Primary Button</a-button>
     </div>
 </template>
 
