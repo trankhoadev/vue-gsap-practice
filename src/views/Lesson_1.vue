@@ -10,7 +10,7 @@ const play = () => {
 };
 
 const reverse = () => {
-    masterTL.reverse(); // Reverse the timeline to play the animation backwards
+    masterTL.reverse();
 };
 
 const sunTL = () => {

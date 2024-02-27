@@ -5,7 +5,7 @@
 <template>
     <div class="container">
         <div class="background">
-            <router-link to="/lesson_1">Helo may be</router-link>
+            <router-link to="/lesson-1">Helo may be</router-link>
         </div>
     </div>
 </template>

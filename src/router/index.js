@@ -4,8 +4,9 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
 /* Lesson page here */
-import Lesson_1 from '@/views/Lesson_1.vue'
+import Lesson1 from '@/views/Lesson_1.vue'
 import DemoView from '@/views/DemoView.vue'
+import ScrollTrigger from '@/views/ScrollTrigger.vue'
 import ErrorNotFound from '@/views/ErrorNotFound.vue'
 
 const routes = [
@@ -22,9 +23,15 @@ const routes = [
   },
 
   {
-    path: '/lesson_1',
+    path: '/lesson-1',
     name: 'Lesson1',
-    component: Lesson_1
+    component: Lesson1
+  },
+
+  {
+    path: '/scroll-trigger',
+    name: 'ScrollTrigger',
+    component: ScrollTrigger
   },
 
   /* Catch for page not found */
