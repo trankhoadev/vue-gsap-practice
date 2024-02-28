@@ -8,6 +8,7 @@ import Lesson1 from '@/views/Lesson_1.vue'
 import DemoView from '@/views/DemoView.vue'
 import ScrollTrigger from '@/views/ScrollTrigger.vue'
 import ScrollSmoother from '@/views/ScrollSmoother.vue'
+import SplitText from '@/views/SplitText.vue'
 import ErrorNotFound from '@/views/ErrorNotFound.vue'
 
 const routes = [
@@ -39,6 +40,12 @@ const routes = [
     path: '/scroll-smoother',
     name: 'ScrollSmoother',
     component: ScrollSmoother
+  },
+
+  {
+    path: '/split-text',
+    name: 'SplitText',
+    component: SplitText
   },
 
   /* Catch for page not found */

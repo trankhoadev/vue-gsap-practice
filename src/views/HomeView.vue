@@ -6,6 +6,7 @@
     <router-link to="lesson-1"><a-button type="primary">Lesson 1</a-button></router-link>
     <router-link to="/scroll-trigger"><a-button type="primary">Stroll Trigger</a-button></router-link>
     <router-link to="/scroll-smoother"><a-button type="primary">Stroll Smoother</a-button></router-link>
+    <router-link to="/split-text"><a-button type="primary">Split Text</a-button></router-link>
     <router-link class="ant-mt-24" to="/demo"><a-button type="primary">Demo Page</a-button></router-link>
   </div>
 </template>
