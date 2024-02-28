@@ -21,7 +21,7 @@ onMounted(() => {
 
 
     ScrollSmoother.create({
-        smooth: 2, // how long (in seconds) it takes to "catch up" to the native scroll position
+        smooth: 3, // how long (in seconds) it takes to "catch up" to the native scroll position
         effects: true, // looks for data-speed and data-lag attributes on elements
         smoothTouch: 0.1, // much shorter smoothing time on touch devices (default is NO smoothing on touch devices)
     });
@@ -45,14 +45,17 @@ onUnmounted(() => {
                             stroke-width="48" d="m112 184l144 144l144-144" />
                     </svg>
                 </span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, minima! Eveniet minus dolorem tenetur
-                    quas in
-                    impedit ad corporis fugit iste? Molestiae, ut? Minus quasi ducimus iusto temporibus molestiae
-                    consequuntur.</p>
 
             </div>
 
             <div class="wrapper-2">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, minima! Eveniet minus dolorem tenetur
+                    quas in
+                    impedit ad corporis fugit iste? Molestiae, ut? Minus quasi ducimus iusto temporibus molestiae
+                    consequuntur.</p>
+            </div>
+
+            <div class="wrapper-3">
 
             </div>
         </div>
@@ -76,7 +79,7 @@ onUnmounted(() => {
         color: #111;
         z-index: 1;
         font-weight: 600;
-        font-size: 2em;
+        font-size: 2.3em;
         letter-spacing: 1px;
         line-height: 30px;
         margin: 3em 0;
@@ -91,15 +94,31 @@ onUnmounted(() => {
             font-size: 1.3em;
         }
     }
-
-    p {
-        font-size: 1.2em;
-        color: #fff;
-    }
 }
 
 .wrapper-2 {
     background-image: url('https://i.pinimg.com/originals/84/bb/80/84bb80a5e0ce779fca4c1f6a4d444987.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    p {
+        font-size: 1.3em;
+        color: #fff;
+        max-width: 70%;
+        margin: 3em 0;
+
+    }
+}
+
+.wrapper-3 {
+    background-image: url('https://i.pinimg.com/originals/0d/5b/d6/0d5bd6abcbec43aec406e7ee9d76adf6.png');
     width: 100vw;
     height: 100vh;
     background-position: center;

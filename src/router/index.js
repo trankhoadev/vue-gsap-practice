@@ -7,6 +7,7 @@ import HomeView from '@/views/HomeView.vue'
 import Lesson1 from '@/views/Lesson_1.vue'
 import DemoView from '@/views/DemoView.vue'
 import ScrollTrigger from '@/views/ScrollTrigger.vue'
+import ScrollSmoother from '@/views/ScrollSmoother.vue'
 import ErrorNotFound from '@/views/ErrorNotFound.vue'
 
 const routes = [
@@ -32,6 +33,12 @@ const routes = [
     path: '/scroll-trigger',
     name: 'ScrollTrigger',
     component: ScrollTrigger
+  },
+
+  {
+    path: '/scroll-smoother',
+    name: 'ScrollSmoother',
+    component: ScrollSmoother
   },
 
   /* Catch for page not found */
