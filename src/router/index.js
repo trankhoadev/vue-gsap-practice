@@ -10,6 +10,7 @@ import ScrollTrigger from '@/views/ScrollTrigger.vue'
 import ScrollSmoother from '@/views/ScrollSmoother.vue'
 import SplitText from '@/views/SplitText.vue'
 import ErrorNotFound from '@/views/ErrorNotFound.vue'
+import AuthenticationPage from "@/views/AuthenticationPage.vue";
 
 const routes = [
   {
@@ -46,6 +47,12 @@ const routes = [
     path: '/split-text',
     name: 'SplitText',
     component: SplitText
+  },
+
+  {
+    path: '/login',
+    name: 'Authentication',
+    component: AuthenticationPage
   },
 
   /* Catch for page not found */
