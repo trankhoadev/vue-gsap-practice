@@ -1,75 +1,136 @@
 <template>
-    <a-form @submit="handleSubmit" :form="form" class="login-form">
-      <a-form-item label="Username" :label-col="{ span: 6 }" :wrapper-col="{ span: 12 }">
-        <a-input v-model="username" placeholder="Username"></a-input>
-      </a-form-item>
-      <a-form-item label="Password" :label-col="{ span: 6 }" :wrapper-col="{ span: 12 }">
-        <a-input-password v-model="password" placeholder="Password"></a-input-password>
-      </a-form-item>
-      <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
-        <a-button type="primary" html-type="submit" class="login-form-button">Login</a-button>
-      </a-form-item>
-      <a-form-item :wrapper-col="{ span: 12, offset: 6 }">
-        <a-button type="primary" @click="loginWithFacebook">Login with Facebook</a-button>
-      </a-form-item>
-    </a-form>
-  </template>
-  
-  <script>
-  import { ref } from 'vue';
-  import { Form, Input, Button, message } from 'ant-design-vue';
-  
-  // Replace these values with your actual Facebook App ID and Redirect URI
-  const FACEBOOK_APP_ID = '411907374712785';
-  const REDIRECT_URI = 'http://localhost:5173/';
-  
-  export default {
-    components: {
-      'a-form': Form,
-      'a-form-item': Form.Item,
-      'a-input': Input,
-      'a-input-password': Input.Password,
-      'a-button': Button,
-    },
-    setup() {
-      const form = Form.useForm()[0];
-      const username = ref('');
-      const password = ref('');
-  
-      const handleSubmit = (e) => {
-        e.preventDefault();
-        form.validateFields((err, values) => {
-          if (!err) {
-            console.log('Received values of form: ', values);
-            message.success('Login successful!');
-          }
-        });
-      };
-  
-      const loginWithFacebook = () => {
-        const facebookLoginUrl = `https://www.facebook.com/v12.0/dialog/oauth?client_id=${FACEBOOK_APP_ID}&redirect_uri=${REDIRECT_URI}&scope=email`;
-        window.location.href = facebookLoginUrl;
-      };
-  
-      return {
-        form,
-        username,
-        password,
-        handleSubmit,
-        loginWithFacebook,
-      };
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .login-form {
-    max-width: 300px;
-    margin: 0 auto;
-    padding-top: 50px;
+  <div class="facebook-login">
+    <button @click="buttonClicked">
+      <i class="spinner" v-if="isWorking"></i>
+      <img :src="icon" v-if="!isWorking">{{ getButtonText }}
+    </button>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed, onMounted, defineProps, defineEmits } from 'vue';
+import {
+  loadFbSdk,
+  getFbLoginStatus,
+  fbLogout,
+  fbLogin
+} from '@/utils/helpers';
+
+const props = defineProps({
+  appId: { type: String, required: true, default: '374376776049353' },
+  version: { type: String, default: 'v19.0' },
+  logoutLabel: { type: String, default: 'Log out from Facebook' },
+  loginLabel: { type: String, default: 'Log in to Facebook' },
+  loginOptions: {
+    type: Object,
+    default: () => ({ scope: 'email' })
   }
-  .login-form-button {
-    width: 100%;
+});
+
+const emits = defineEmits(['click', 'login', 'logout', 'sdk-loaded']);
+
+const isWorking = ref(false);
+const isConnected = ref(false);
+const icon = './icon.png';
+
+onMounted(() => {
+  isWorking.value = true;
+  loadFbSdk(props.appId, props.version)
+    .then(getFbLoginStatus)
+    .then(response => {
+      if (response.status === 'connected') {
+        isConnected.value = true;
+      }
+      isWorking.value = false;
+      emits('sdk-loaded', { isConnected: isConnected.value, FB: window.FB });
+    });
+});
+
+const getButtonText = computed(() => {
+  switch (isConnected.value) {
+    case true:
+      return props.logoutLabel;
+    case false:
+      return props.loginLabel;
+    default:
+      return 'this is default';
   }
-  </style>
-  
+});
+
+const buttonClicked = () => {
+  emits('click');
+  if (isConnected.value) {
+    logout();
+  } else {
+    login();
+  }
+};
+
+const login = () => {
+  isWorking.value = true;
+  fbLogin(props.loginOptions)
+    .then(response => {
+      isConnected.value = response.status === 'connected';
+      isWorking.value = false;
+      emits('login', { response, FB: window.FB });
+    });
+};
+
+const logout = () => {
+  isWorking.value = true;
+  fbLogout()
+    .then(response => {
+      isWorking.value = false;
+      isConnected.value = false;
+      emits('logout', response);
+    });
+};
+</script>
+
+<style scoped>
+.facebook-login {
+  box-sizing: border-box;
+}
+
+.facebook-login * {
+  box-sizing: inherit;
+}
+
+.facebook-login button {
+  border: none;
+  color: #fff;
+  position: relative;
+  line-height: 34px;
+  min-width: 225px;
+  padding: 0 15px 0px 46px;
+  background-image: linear-gradient(#4c69ba, #3b55a0);
+}
+
+.facebook-login .spinner {
+  left: 5px;
+  width: 30px;
+  height: 90%;
+  display: block;
+  border-radius: 50%;
+  position: absolute;
+  border: 5px solid #f3f3f3;
+  border-top-color: #3498db;
+  animation: facebook-login-spin 2s linear infinite;
+}
+
+.facebook-login img {
+  position: absolute;
+  top: 3px;
+  left: 10px;
+  width: 30px;
+}
+
+@keyframes facebook-login-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+</style>

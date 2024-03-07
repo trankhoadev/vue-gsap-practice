@@ -7,14 +7,13 @@ import VitePluginSass from 'vite-plugin-sass'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    vue(),
-    vueJsx(),
-    VitePluginSass
-  ],
+  plugins: [vue(), vueJsx(), VitePluginSass],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   }
+  //   server: {
+  //   https: true,
+  // },
 })
