@@ -14,7 +14,7 @@ import {
   getFbLoginStatus,
   fbLogout,
   fbLogin
-} from '@/utils/helpers';
+} from '@/config/facebook_oAuth';
 
 const props = defineProps({
   appId: { type: String, required: true, default: '374376776049353' },
@@ -129,6 +129,7 @@ const logout = () => {
   0% {
     transform: rotate(0deg);
   }
+
   100% {
     transform: rotate(360deg);
   }
