@@ -3,10 +3,8 @@
 
 <template>
   <div class="container">
-    <router-link to="/gsap"><a-button type="primary">GSAP</a-button></router-link>
-    <router-link to="/threejs"><a-button type="primary">ThreeJs</a-button></router-link>
-    <router-link to="/login"><a-button type="primary">Authentication</a-button></router-link>
-    <router-link class="ant-mt-24" to="/demo"><a-button type="primary">Demo Page</a-button></router-link>
+    <router-link to="/login/facebook"><a-button type="primary">Login by Facebook</a-button></router-link>
+    <router-link to="/login/google"><a-button type="primary">Login by Google</a-button></router-link>
   </div>
 </template>
 

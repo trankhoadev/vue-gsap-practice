@@ -4,13 +4,20 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 
 /* Lesson page here */
-import Lesson1 from '@/views/Lesson_1.vue'
 import DemoView from '@/views/DemoView.vue'
-import ScrollTrigger from '@/views/ScrollTrigger.vue'
-import ScrollSmoother from '@/views/ScrollSmoother.vue'
-import SplitText from '@/views/SplitText.vue'
 import ErrorNotFound from '@/views/ErrorNotFound.vue'
-import AuthenticationPage from "@/views/AuthenticationPage.vue";
+
+/* GSAP */
+import Lesson1 from '@/views/GSAP/Lesson_1.vue'
+import RedirectGsap from '@/views/GSAP/RedirectPageGsap.vue'
+import ScrollTrigger from '@/views/GSAP/ScrollTrigger.vue'
+import ScrollSmoother from '@/views/GSAP/ScrollSmoother.vue'
+import SplitText from '@/views/GSAP/SplitText.vue'
+
+/* Authentication */
+import RedirectAuthentication from '@/views/authentication/RedirectPageAuthentication.vue'
+import FbAuthentication from '@/views/authentication/FacebookAuthentication.vue'
+import GooleAuthentication from '@/views/authentication/GoogleAuthentication.vue'
 
 const routes = [
   {
@@ -20,39 +27,58 @@ const routes = [
   },
 
   {
+    path: '/gsap',
+    name: 'RedirectGsap',
+    component: RedirectGsap
+  },
+
+  {
     path: '/demo',
     name: 'Demo',
     component: DemoView
   },
 
   {
-    path: '/lesson-1',
+    path: '/gsap/lesson-1',
     name: 'Lesson1',
     component: Lesson1
   },
 
   {
-    path: '/scroll-trigger',
+    path: '/gsap/scroll-trigger',
     name: 'ScrollTrigger',
     component: ScrollTrigger
   },
 
   {
-    path: '/scroll-smoother',
+    path: '/gsap/scroll-smoother',
     name: 'ScrollSmoother',
     component: ScrollSmoother
   },
 
   {
-    path: '/split-text',
+    path: '/gsap/split-text',
     name: 'SplitText',
     component: SplitText
   },
 
+  /* Authentication */
   {
     path: '/login',
-    name: 'Authentication',
-    component: AuthenticationPage
+    name: 'RedirectAuthentication',
+    component: RedirectAuthentication
+  },
+
+  {
+    path: '/login/facebook',
+    name: 'FbAuthentication',
+    component: FbAuthentication
+  },
+
+  {
+    path: '/login/google',
+    name: 'GooleAuthentication',
+    component: GooleAuthentication
   },
 
   /* Catch for page not found */
