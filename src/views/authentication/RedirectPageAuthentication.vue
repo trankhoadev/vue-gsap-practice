@@ -5,6 +5,7 @@
   <div class="container">
     <router-link to="/login/facebook"><a-button type="primary">Login by Facebook</a-button></router-link>
     <router-link to="/login/google"><a-button type="primary">Login by Google</a-button></router-link>
+    <router-link to="/login/backend-jwt"><a-button type="primary">Backend Login JWT</a-button></router-link>
   </div>
 </template>
 

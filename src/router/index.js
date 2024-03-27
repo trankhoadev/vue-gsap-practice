@@ -18,6 +18,7 @@ import SplitText from '@/views/GSAP/SplitText.vue'
 import RedirectAuthentication from '@/views/authentication/RedirectPageAuthentication.vue'
 import FbAuthentication from '@/views/authentication/FacebookAuthentication.vue'
 import GooleAuthentication from '@/views/authentication/GoogleAuthentication.vue'
+import BackendLogin from '@/views/authentication/BackendLogin.vue'
 
 const routes = [
   {
@@ -79,6 +80,12 @@ const routes = [
     path: '/login/google',
     name: 'GooleAuthentication',
     component: GooleAuthentication
+  },
+
+  {
+    path: '/login/backend-jwt',
+    name: 'BackendAuthentication',
+    component: BackendLogin
   },
 
   /* Catch for page not found */
