@@ -8,7 +8,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, defineProps, defineEmits } from 'vue';
+import { ref, computed, onMounted, defineEmits } from 'vue';
 import {
   loadFbSdk,
   getFbLoginStatus,
