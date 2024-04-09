@@ -6,7 +6,9 @@ export const useBackendLoginStore = defineStore('storeBackendLogin', {
     formState: reactive({
       userName: '',
       passWord: '',
-      remember: true
+      c: '',
+      remember: true,
+      isShowCreateAccountForm: false
     })
   }),
   actions: {}
