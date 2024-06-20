@@ -1,4 +1,9 @@
 @import './base.css';
+/* import the required styles */
+@import '@vue-flow/core/dist/style.css';
+
+/* import the default theme (optional) */
+@import '@vue-flow/core/dist/theme-default.css';
 
 #app {
   /* padding: 2rem; */

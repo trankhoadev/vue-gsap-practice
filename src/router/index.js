@@ -20,6 +20,9 @@ import FbAuthentication from '@/views/authentication/FacebookAuthentication.vue'
 import GooleAuthentication from '@/views/authentication/GoogleAuthentication.vue'
 import BackendLogin from '@/views/authentication/BackendLogin.vue'
 
+/* Workflow */
+import WorkFlow from '@/views/WorkFlow/WorkFlow.vue'
+
 const routes = [
   {
     path: '/',
@@ -37,6 +40,12 @@ const routes = [
     path: '/demo',
     name: 'Demo',
     component: DemoView
+  },
+
+  {
+    path: '/work-flow',
+    name: 'WorkFlow',
+    component: WorkFlow
   },
 
   {
